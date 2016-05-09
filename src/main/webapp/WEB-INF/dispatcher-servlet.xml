@@ -1,0 +1,97 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:mvc="http://www.springframework.org/schema/mvc"
+ xmlns:tx="http://www.springframework.org/schema/tx"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+ http://www.springframework.org/schema/mvc
+ 
+ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-3.0.xsd
+ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+ http://www.springframework.org/schema/tx">
+ 
+
+<context:component-scan base-package="com.controller" />
+ <context:component-scan base-package="DAOClass" />
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/view/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+    <mvc:annotation-driven/>
+    
+    
+    <!--  Hibernate config--> 
+    
+         <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">  
+        <property name="driverClassName"  value="org.h2.Driver"></property>  
+        <property name="url" value="jdbc:h2:tcp://localhost/~/test"></property>  
+        <property name="username" value="punam"></property>  
+        <property name="password" value=""></property>  
+    </bean>  
+
+     <!--   <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource"/>
+ 
+</bean>-->
+    <bean id="sessionFactory"  class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource">
+               
+        </property>  
+          
+          <property name="annotatedClasses">
+			<list>
+				<!--  <value>ModelClass.User</value>  Entity classes-->
+				  <value>com.EntityClassess.Product</value>
+			</list>
+			</property>
+       
+        <property name="hibernateProperties">  
+            <props>  
+                <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>  
+                <prop key="hibernate.hbm2ddl.auto">update</prop>  
+                <prop key="hibernate.show_sql">true</prop>  
+                  
+            </props>  
+        </property>  
+        
+    </bean>  
+    <bean class="org.springframework.orm.hibernate4.HibernateTransactionManager" id="txAdvice">  
+ <property name="sessionFactory" ref="sessionFactory"></property>  
+  </bean>  
+     <bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+ 
+         <!-- setting maximum upload size -->
+        <property name="maxUploadSize" value="100000" />
+ 
+    </bean>
+    
+   
+
+        <bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+	</bean>
+  <!--  <bean id="dataDaoImpl" class="org.controller.UserDaoImpl"></bean>  
+   <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"></bean>
+   <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"></bean> -->  
+    <bean id="productServiceImpl" class="com.controller.ProductServiceImpl" />   
+    
+  <bean id="multiPartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
+ 
+    <mvc:resources mapping="/static/**" location="/static/" />
+    <mvc:default-servlet-handler />
+ 
+</beans>
