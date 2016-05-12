@@ -16,13 +16,13 @@
 <div class="container" style="margin-left: 25%">
      <ul class="row">
           <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">    
-          <img src="<c:url value="resources/images/m4.jpg"/>"  width="100%" ></li>
+         <a href="<c:url value="/ViewAllByCtg?id=Hindi"/>"><img src="<c:url value="resources/images/hindi.png"/>"  height="20%" width="100%" ></a> </li>
             <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">    
          <%--  <img src="<c:url value="resources/images/m6.jpg"/>"  width="100%" ></li>
             <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"> --%>    
-          <img src="<c:url value="resources/images/m2.jpg"/>"  width="100%" ></li>
+          <a href="<c:url value="/ViewAllByCtg?id=Marathi"/>"><img src="<c:url value="resources/images/marathi.jpg"/>"  width="100%" ></a></li>
            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">    
-          <img src="<c:url value="resources/images/m5.jpg"/>"  width="100%" ></li>
+          <a href="<c:url value="/ViewAllByCtg?id=English"/>"><img src="<c:url value="resources/images/hollywood.jpg"/>"  height="20%"width="100%" ></a></li>
      </ul>
 </div>
 </body>

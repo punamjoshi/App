@@ -1,5 +1,10 @@
 package com.EntityClassess;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.net.URLDecoder;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,19 +30,33 @@ public class Product {
 	private String price;
 	private String ctg;
 	private String subctg;
-  /*   @Column
-    private String file;
+     @Column
+    private String fpath;
     
- //    private MultipartFile file1;
+   transient private MultipartFile file1;
      
 	
-	public String getFile() {
-		return file;
+	
+
+	
+
+	
+
+	public MultipartFile getFile1() {
+		return file1;
 	}
 
-	public void setFile(String file) {
-		this.file = file;
-	}*/
+	public void setFile1(MultipartFile file1) {
+		this.file1 = file1;
+	}
+
+	public String getFpath() {
+		return fpath;
+	}
+
+	public void setFpath(String fpath) {
+		this.fpath = fpath;
+	}
 
 	public String getProdid() {
 		return prodid;
@@ -87,6 +106,37 @@ public class Product {
 		this.subctg = subctg;
 	}
 
+	
+	public  String getFilePath(String path1,String contextpath)
+	{
+		
+		
+		String fileName = null;
+    	if (!file1.isEmpty()) {
+            try {
+            	
+            	
+                fileName = file1.getOriginalFilename();
+                byte[] bytes = file1.getBytes();
+                	String npath=path1+"\\resources\\images\\"+ fileName;
+             //  String npath="/App/reources/"+fileName;
+        				BufferedOutputStream buffStream = 
+                        new BufferedOutputStream(new FileOutputStream(new File(npath)));
+                buffStream.write(bytes);
+                buffStream.close();
+               String dbfilename=contextpath+"/resources/images/"+fileName;
+                
+                this.setFpath(dbfilename);
+                return dbfilename;
+            } catch (Exception e) {
+                return "You failed to upload " + fileName + ": " + e.getMessage();
+            }
+        } else {
+            return "Unable to upload. File is empty.";
+        }
+		
+		
+	}
 	
 	
 	public Product() {

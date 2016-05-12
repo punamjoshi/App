@@ -9,7 +9,7 @@
   <script src="<c:url value="/resources/js/jquery.min.js"/>"></script>
 
 </head>
-<body  style="background: #76b852;">
+<body  style="background: #e9e7e8;">
 <br/>
 <%@ include file="NavBar.jsp" %>
 <%@include file="Slider.jsp" %>

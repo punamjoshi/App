@@ -9,12 +9,12 @@
  <link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>">
 <title>Insert title here</title>
 </head>
-<body>
-<div class="register-form " >
+<body style="background: #e9e7e8;">
+<div class="register-form" >
 
   <div class="form">
    <h3>Add Product </h3>
-    <form:form class="login-form"  method="POST" action="save"  commandName="product" enctype="multipart/form-data">
+    <form:form class="login-form"  method="POST" action="save?${_csrf.parameterName}=${_csrf.token}"  commandName="product" enctype="multipart/form-data">
      <form:input path="prodid" placeholder="ProductID"/>
       <form:input path="ctg" placeholder="Category"/>
       <form:input path="subctg" placeholder="Sub Category"/>
@@ -22,12 +22,13 @@
         <form:input path="price" placeholder="Price"/>
          <form:input path="pname" placeholder="Name"/>
          
-         Add Image: <input type="file"  path="file" name="file" id="file"/>
+         Add Image: <form:input type="file" path="file1"  name="file1" id="file1"/>
      <%--  Name: <input type="text" name="name"><br /> <br /> 
         <a href="<c:url value="/upload"/>">Upload</a> --%>
         <br /> <br/>
       <input type="submit" value="Add">
-     
+      <input type="hidden" 
+                     name="${_csrf.parameterName}" value="${_csrf.token}" />
     </form:form>
   </div>
 </div>

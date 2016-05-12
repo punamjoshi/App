@@ -15,9 +15,10 @@
 
   <ul class="nav nav-pills nav-stacked">
  
-    <li class="active"><a href="<c:url value="/AddProduct"/>">Add</a></li>
-    <li class="active"><a href="<c:url value="/ViewAll"/>">ViewAll</a></li>
-    <li class="active"><a href="#">Delete</a></li>
+    <li class="active"><a href="<c:url value="/AddProduct"/>">Add Movie</a></li>
+    <li class="active"><a href="<c:url value="/ViewAll"/>">ViewAllMovies</a></li>
+    <li class="active"><a href="#">ViewAllUsers</a></li>
+    <li class="active"><a href="#"></a></li>
   </ul>
 </div>
 

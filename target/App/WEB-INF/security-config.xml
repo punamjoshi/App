@@ -1,0 +1,78 @@
+    <beans:beans xmlns="http://www.springframework.org/schema/security"  
+     xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+     xmlns:security="http://www.springframework.org/schema/security"
+     xsi:schemaLocation="http://www.springframework.org/schema/beans  
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+      http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+     http://www.springframework.org/schema/security  
+     http://www.springframework.org/schema/security/spring-security.xsd">  
+<!--       
+     <http auto-config="true">  
+      <access-denied-handler error-page="/403page" />  
+      <intercept-url pattern="/User/**" access="hasRole('ROLE_USER')" />  
+      <intercept-url pattern="/User/**" access="hasRole('ROLE_ADMIN')" />  
+      <form-login login-page="/Login" username-parameter="username"  
+       password-parameter="password" default-target-url="/User"  
+       authentication-failure-url="/Login?authfailed" />  
+      <logout logout-success-url="/Login?logout" />  
+     </http>  
+      
+     <authentication-manager> <authentication-provider> <user-service> <user   
+      name="user" password="user@123" authorities="hasRole('ROLE_ADMIN')" /> </user-service>   
+      </authentication-provider> </authentication-manager>  
+      
+     <authentication-manager>  
+      <authentication-provider>  
+       <jdbc-user-service data-source-ref="dataSource"  
+        users-by-username-query="select username,password from user where username=?"  
+        authorities-by-username-query="select userid, role from user_authorization where username =?  " />  
+      </authentication-provider>  
+     </authentication-manager>   -->
+     
+ <!--     
+     
+     <http auto-config="true">
+      
+<intercept-url pattern="/" access="permitAll" />
+<form-login login-page="/Login" default-target-url="/" username-parameter="j_username" password-parameter="j_password" login-processing-url="/j_spring_security_check"
+       authentication-failure-url="/Login?authfailed" />
+      <csrf/>
+</http>
+ 
+<authentication-manager>
+<authentication-provider>
+<user-service>
+<user name="alpha" password="pass1" authorities="ROLE_ADMIN" />
+</user-service>
+</authentication-provider>
+</authentication-manager>  -->
+     
+     
+     
+     
+     
+     
+     <http auto-config="true">
+      
+<intercept-url pattern="/" access="hasRole('USER')" />
+<form-login login-page="/Login" default-target-url="/" username-parameter="j_username" password-parameter="j_password" login-processing-url="/j_spring_security_check"
+       authentication-failure-url="/Login?authfailed" />
+      <csrf/>
+</http>
+<authentication-manager>
+<authentication-provider>
+
+
+<jdbc-user-service
+data-source-ref="dataSource"
+users-by-username-query="select username,password,enabled from USER_AUTHENTICATION  where username=?"
+authorities-by-username-query="select u1.username, u2.role from USER_AUTHENTICATION  u1,  USER_AUTHORIZATION  u2 where u1.userid = u2.userid and u1.username=?" />
+</authentication-provider>
+
+
+</authentication-manager>
+     
+     
+      
+    </beans:beans>  

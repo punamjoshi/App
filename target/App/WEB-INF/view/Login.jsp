@@ -5,27 +5,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
  <link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>">
 <title>Insert title here</title>
 </head>
-<body>
+<body style="background: #e9e7e8;">
 <div class="login-page">
   <div class="form">
-    <form class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>
-    <form class="login-form">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button>login</button>
-     
+  
+
+     <c:out value="${message}"/>
+    <form class="login-form" action="<c:url value='j_spring_security_check'/>" method="POST">
+      <input type="text" placeholder="username" name="j_username"/>
+      <input type="password" placeholder="password" name="j_password"/>
+      <input type="submit" value="login">
+     <input type="hidden" 
+                     name="${_csrf.parameterName}" value="${_csrf.token}" />
     </form>
   </div>
 </div>
 
 </body>
 </html>
+
+

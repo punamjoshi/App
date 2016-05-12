@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.DAO.ProductDAO;
 import com.DAO.ProductService;
 import com.EntityClassess.Product;
+import com.EntityClassess.User;
 @Service
 public class ProductServiceImpl implements ProductService{
 
@@ -45,6 +46,13 @@ public class ProductServiceImpl implements ProductService{
 		
 		Product p=productDao.getProductbyId(prodid);
 		return p;
+	}
+
+	@Override
+	public List<Product> getRecordsByCtg(String ctg) {
+		// TODO Auto-generated method stub
+		
+		return productDao.getRecordsByCtg(ctg);
 	}
 
 }

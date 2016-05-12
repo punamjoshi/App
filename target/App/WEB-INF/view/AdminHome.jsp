@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body style="background: #76b852;">
+<body style="background: #e9e7e8;">
 <%@ include file="NavBar1.jsp" %>
 </body>
 </html>

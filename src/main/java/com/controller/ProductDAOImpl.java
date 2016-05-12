@@ -2,7 +2,10 @@ package com.controller;
 
 import java.util.List;
 
+
+
 import javax.transaction.Transactional;
+
 
 
 
@@ -16,6 +19,7 @@ import org.springframework.stereotype.Repository;
 
 import com.DAO.ProductDAO;
 import com.EntityClassess.Product;
+import com.EntityClassess.User;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO {
@@ -31,7 +35,7 @@ public class ProductDAOImpl implements ProductDAO {
 		// TODO Auto-generated method stub
          Transaction tx;
 		 Session session=sessionFactory.openSession();
-         tx=session.beginTransaction();
+        tx=session.beginTransaction();
          session.save(p);
          tx.commit();
          session.close();
@@ -78,6 +82,17 @@ public class ProductDAOImpl implements ProductDAO {
 		  Session session = sessionFactory.openSession();  
 		  Product prod = (Product) session.load(Product.class, prodid);  
 		  return prod;  
+	}
+
+	@Override
+	public List<Product> getRecordsByCtg(String ctg) {
+		// TODO Auto-generated method stub
+		 Session session = sessionFactory.openSession();  
+		  @SuppressWarnings("unchecked")  
+		  List<Product> ProductList = session.createQuery("from Product where subctg='"+ctg+"'")  
+		    .list();  
+		  session.close();  
+		  return ProductList; 
 	}
 
 }
