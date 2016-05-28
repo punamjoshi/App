@@ -18,7 +18,7 @@
 </head>
 <body>
  <div class="container-fluid">
-<div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:70%;margin-left: 15%;">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:90%;margin-left: 5%;">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -33,13 +33,14 @@
       </div>
 
       <div class="item">
-          <img src="<c:url value="resources/images/m9.jpg"/>"  width="90%" >
+          <img src="<c:url value="resources/images/m9.jpg"/>"  width="100%" >
            
       </div>
         <div class="item">
-          <img src="<c:url value="resources/images/m8.jpg"/>"  width="90%" >
+          <img src="<c:url value="resources/images/m8.jpg"/>"  width="100%" >
            
       </div>
+     
     </div>
 
     <!-- Left and right controls -->

@@ -8,6 +8,8 @@ import java.util.Set;
 
 
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,7 +17,9 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 
 
@@ -38,7 +42,8 @@ public class User {
 	 private String username;
 	 
 	 @NotEmpty(message="please enter password")
-	
+	//@Range(min=8 , message="Please enter password minmum 8 character and maximum 20 characters" )
+	 @Length(min=8,message="please enter password min 8 character")
 	private String password;
 	 @NotEmpty(message="please enter contact no.")
 	private String mobno;
@@ -51,6 +56,16 @@ public class User {
 	private String city;
 	 @NotEmpty(message="please enter country")
 	private String country;
+	@Column
+	 private String cpassword;
+	 
+	public String getCpassword() {
+		return cpassword;
+	}
+	public void setCpassword(String cpassword) {
+		this.cpassword = cpassword;
+	}
+
 	@OneToMany(mappedBy="user")
 	Set<User_Authorization>roles;
 	public User() {

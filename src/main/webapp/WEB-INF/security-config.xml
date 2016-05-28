@@ -59,7 +59,7 @@
 <intercept-url pattern="/AdminHomePage" access="hasRole('ADMIN')"/>
 <intercept-url pattern="/User" access="hasRole('USER')"/>
 <form-login login-page="/Login" default-target-url="/" username-parameter="j_username" password-parameter="j_password" login-processing-url="/j_spring_security_check"
-       authentication-failure-url="/Login?authfailed" />
+       authentication-failure-url="/Login?authfailed"/>
       <csrf disabled="true"/>
 </http>
 <authentication-manager>
@@ -71,10 +71,5 @@ data-source-ref="dataSource"
 users-by-username-query="select username,password,enabled from USER_AUTHENTICATION  where username=?"
 authorities-by-username-query="select u1.username, u2.role from USER_AUTHENTICATION  u1,  USER_AUTHORIZATION  u2 where u1.userid = u2.userid and u1.username=?" />
 </authentication-provider>
-
-
 </authentication-manager>
-     
-     
-      
-    </beans:beans>  
+</beans:beans>  

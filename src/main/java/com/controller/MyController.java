@@ -26,6 +26,7 @@ import com.DAO.UserService;
 import com.EntityClassess.Product;
 import com.EntityClassess.User;
 
+//this class is controller class which handles request.
 
 @Controller
 public class MyController {
@@ -36,23 +37,20 @@ public class MyController {
 	  ServletContext req;
 	 @Autowired
 	 UserService userService;
+	 
+	 
+	 //(/)request maaping when procject runs it will call this request 
+	 
 	 @RequestMapping("/")
 	 public String show()
 	 {
 		  System.out.println("Controller");
-		 /* Product p=new Product();
-		  
-		  p.setCtg("Movie");
-		  p.setSubctg("Bollywood");
-		  p.setPname("Airlift");
-		  p.setPqty("20");
-		  p.setPrice("300");
-		  p.setProdid("123");
-		  service.addProduct(p);
-		  System.out.println(" After Controller");*/
+		
 		 return "index";
 	 }
 	
+	 
+	 //When admin click on viewAll Option it will come to this request will return list of product on ViewAll jsp page
 	 
 	 @RequestMapping("/ViewAll")  
 	 public ModelAndView getList() {  
@@ -61,6 +59,12 @@ public class MyController {
 	 }  
 	 
 	 
+	 /*When admin click on addproduct it will come to this request and will save the product into db using service object of
+	  * ProductService interface.
+	  * req is object of ServletContext used to take the real and context path of project to save image and image path into database
+	  * getFilePath is userdefined function which is in Product class  
+	   
+	 */
 	 
 	  @RequestMapping(value="/save",method=RequestMethod.POST)
 	 
@@ -79,6 +83,12 @@ public class MyController {
 	  }
 	
 	  
+	  /*
+	   *  This function will call when admin will click delete option which is on ViewAll Jsp
+	   *  service is object of ProductService interface
+	   *  service is calling deleteProduct function. implementation of this function is in productDaoImpl class.
+	   *  
+	   * */
 	  @RequestMapping("/delete")
 	  public String deleteProduct(@RequestParam("id")String prodid)
 	  {
@@ -86,6 +96,12 @@ public class MyController {
 		  return "redirect:ViewAll";
 		  
 	  }
+	  
+	  /*
+	   * This rquest is call when admin click on edit option which is on ViewAll jsp
+	   * in this service object is calling getProductById() which return all information of selected product on Edit jsp
+	   * 
+	   */
 	  
 	  
 	  @RequestMapping("/Edit")  
@@ -95,6 +111,12 @@ public class MyController {
 	   System.out.println("Edit:"+productObject.getPname());
 	   return new ModelAndView("Edit", "productObject", productObject);  
 	  }  
+	  
+	  
+	  /*
+	   * This request will call when admin will click on update option which is on EDIT JSP
+		 
+	   */
 	   
 	  @RequestMapping("/update")  
 	  public ModelAndView updateUser(@ModelAttribute Product product) {  
@@ -127,6 +149,11 @@ public class MyController {
 	  }*/
 	  
 	  
+	  /*
+	   * 
+	   * This function will call when user click on register button which is on register page
+	   * userService is object of UserService interface using which calls the addUser()
+	   *  */
 	  @RequestMapping(value="/saveUser", method=RequestMethod.POST)
 	  public String addUser(@Valid @ModelAttribute("userData") User reg,BindingResult result)
 	  {
@@ -143,6 +170,10 @@ public class MyController {
 	  }
 	  
 	  
+	  /*
+	   * This request will call when user click on sign up option which is on index jsp
+	   * 
+	   */
 	  @RequestMapping("/Register")
 	  public ModelAndView register()
 	  {
@@ -189,6 +220,13 @@ public class MyController {
 		  
 		  List<Product> productList = service.getRecordsByCtg(id);  
 		  return new ModelAndView("ViewAll", "productList", productList);  
+	  }
+	  
+	  
+	  @RequestMapping("/Aboutus")
+	  public String aboutus()
+	  {
+		  return "Aboutus";
 	  }
 	  
 }

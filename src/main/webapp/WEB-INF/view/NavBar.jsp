@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse" style="width:80%;margin-left: 10%;margin-right: 20%;">
+<nav class="navbar navbar-inverse" style="width:90%;margin-left: 5%;margin-right: 20%;">
   <div class="container-fluid" >
     <div class="navbar-header">
       <a class="navbar-brand" href="#">My Movie App</a>
@@ -29,7 +29,7 @@
         </ul>
       </li> -->
        <li><a href="<c:url value="/AdminHome"/>">Admin</a></li>
-      <li><a href="#">About Us</a></li>
+      <li><a href="<c:url value="/Aboutus"/>">About Us</a></li>
      
     </ul>
     <ul class="nav navbar-nav navbar-right">

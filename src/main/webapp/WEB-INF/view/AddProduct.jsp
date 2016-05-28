@@ -22,6 +22,7 @@
         <form:input path="price" placeholder="Price"/>
          <form:input path="pname" placeholder="Name"/>
          
+         
          Add Image: <form:input type="file" path="file1"  name="file1" id="file1"/>
      <%--  Name: <input type="text" name="name"><br /> <br /> 
         <a href="<c:url value="/upload"/>">Upload</a> --%>

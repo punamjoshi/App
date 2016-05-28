@@ -9,7 +9,7 @@
  <link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>">
 <title>Insert title here</title>
 </head>
-<bodystyle="background: #e9e7e8;"">
+<body style="background: #e9e7e8;">
 <div class="register-form " >
    
   <div class="form">

@@ -23,6 +23,7 @@
           <a href="<c:url value="/ViewAllByCtg?id=Marathi"/>"><img src="<c:url value="resources/images/marathi.jpg"/>"  width="100%" ></a></li>
            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">    
           <a href="<c:url value="/ViewAllByCtg?id=English"/>"><img src="<c:url value="resources/images/hollywood.jpg"/>"  height="20%"width="100%" ></a></li>
+     <li><a href="<c:url value="/ViewAllByCtg?id=Kids"/>"><img src="<c:url value="resources/images/m11.jpg"/>"  height="20%"width="10%" ></a></li>
      </ul>
 </div>
 </body>
